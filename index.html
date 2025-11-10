@@ -47,43 +47,43 @@
 </head>
 <body>
 <button class="button" id="magicButton">Touch Me Baby</button>
+
 <script>
 const button = document.getElementById('magicButton');
 
-// Images to use
+// ✅ Fixed image URLs
 const images = [
-    'https://github.com/goku-1238/index1.html/blob/891ea16dd158cc444590e39e0f7ab36594b340bd/1.jpg?raw=true',
-    'https://github.com/goku-1238/index1.html/blob/891ea16dd158cc444590e39e0f7ab36594b340bd/2.jpg?raw.true',
-    'https://github.com/goku-1238/index1.html/blob/891ea16dd158cc444590e39e0f7ab36594b340bd/3.jpg?raw=true',
-    'https://github.com/goku-1238/index1.html/blob/891ea16dd158cc444590e39e0f7ab36594b340bd/4.jpg?raw=true',
-    'https://github.com/goku-1238/index1.html/blob/891ea16dd158cc444590e39e0f7ab36594b340bd/5.jpg?raw=true',
+  'https://raw.githubusercontent.com/goku-1238/index1.html/891ea16dd158cc444590e39e0f7ab36594b340bd/1.jpg',
+  'https://raw.githubusercontent.com/goku-1238/index1.html/891ea16dd158cc444590e39e0f7ab36594b340bd/2.jpg',
+  'https://raw.githubusercontent.com/goku-1238/index1.html/891ea16dd158cc444590e39e0f7ab36594b340bd/3.jpg',
+  'https://raw.githubusercontent.com/goku-1238/index1.html/891ea16dd158cc444590e39e0f7ab36594b340bd/4.jpg',
+  'https://raw.githubusercontent.com/goku-1238/index1.html/891ea16dd158cc444590e39e0f7ab36594b340bd/5.jpg'
 ];
 
-// Predefined angles for 5 images in degrees
 const angles = [0, 72, 144, 216, 288];
-const distance = 200; // how far images move
+const distance = 200;
 
 button.addEventListener('click', function() {
-    const rect = button.getBoundingClientRect();
-    images.forEach(function(imgSrc, index) {
-        const img = document.createElement('div');
-        img.className = 'explosion';
-        img.style.backgroundImage = 'url(' + imgSrc + ')';
-        img.style.left = rect.left + rect.width/2 - 40 + 'px';
-        img.style.top = rect.top + rect.height/2 - 40 + 'px';
-        document.body.appendChild(img);
+  const rect = button.getBoundingClientRect();
+  images.forEach((imgSrc, index) => {
+    const img = document.createElement('div');
+    img.className = 'explosion';
+    img.style.backgroundImage = `url(${imgSrc})`;
+    img.style.left = rect.left + rect.width / 2 - 40 + 'px';
+    img.style.top = rect.top + rect.height / 2 - 40 + 'px';
+    document.body.appendChild(img);
 
-        const angleDeg = angles[index]; // use predefined angle
-        const angleRad = angleDeg * Math.PI / 180;
-        const x = distance * Math.cos(angleRad);
-        const y = distance * Math.sin(angleRad);
+    const angleDeg = angles[index];
+    const angleRad = angleDeg * Math.PI / 180;
+    const x = distance * Math.cos(angleRad);
+    const y = distance * Math.sin(angleRad);
 
-        requestAnimationFrame(() => {
-            img.style.transform = `translate(${x}px, ${y}px) rotate(${angleDeg}deg)`;
-        });
+    requestAnimationFrame(() => {
+      img.style.transform = `translate(${x}px, ${y}px) rotate(${angleDeg}deg)`;
     });
+  });
 
-    button.textContent = 'Happy Birthday ❤️‍🩹';
+  button.textContent = 'Happy Birthday ❤️‍🩹';
 });
 </script>
 </body>
